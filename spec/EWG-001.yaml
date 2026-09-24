@@ -1,0 +1,132 @@
+schema_version: 0.1
+object: endogenous_work_generator
+id: EWG-001
+status: EXPERIMENTAL
+authority: experimental_only
+role: controller_subsystem
+definition: >
+  A goal-conditioned endogenous work generator maps an admitted state and protected job
+  to the justified residual work frontier, resolves that frontier into executable behavioral
+  realizations, verifies state deltas, and re-enters until fresh obligation generation
+  yields no unresolved justified work.
+
+mathematical_object:
+  tuple: "<J,S,A,B,O,Gamma,X,V,D,K>"
+  coordinates:
+    J: protected_job_contract
+    S: admitted_current_state
+    A: authority_and_license_state
+    B: normalized_behavior_basis
+    O: open_obligation_frontier
+    Gamma: behavior_realizer
+    X: execution_semantics
+    V: verification_semantics
+    D: verified_discharge_ledger
+    K: closure_kernel
+  residual: "R_J,K(S) = justified unmet conditions for satisfying J from S under kernel K"
+  obligation_generation: "O_t = Generate(J,S_t,DeltaS_{t-1},A_t) - D_t"
+  resolution: "Pi_t = Gamma(O_t,B,A_t)"
+  transition: "S_t --Pi_t--> S_{t+1}"
+  closure: "STOP iff O_t = empty AND Generate(J,S_t,0,A_t)-D_t = empty"
+
+input_contract:
+  required:
+    - protected_job_or_explicit_no_job_experiment
+    - corpus_boundary
+    - admitted_state_or_raw_input_boundary
+    - authority_context
+  raw_input_rule: >
+    Raw input is never silently treated as admitted state. Semantic admission and typing
+    precede result-sensitive operations.
+
+semantic_admission:
+  rule: TYPE_BEFORE_OPERATION
+  blocked_statuses:
+    - TERM_TYPE_OPEN
+    - SEMANTIC_BASIS_OPEN
+  sensitivity_rule: >
+    Unresolved semantic variation blocks any operation whose result changes across that variation.
+  post_run_rule: RE_TYPE_NEW_LOAD_BEARING_ABSTRACTIONS_BEFORE_REUSE
+
+obligation_engine:
+  generated_from:
+    - protected_job
+    - current_state
+    - material_state_delta
+    - unresolved_invariants
+    - verification_failures
+    - discovered_residuals
+    - authority_gaps
+  mandatory_regeneration_after:
+    - material_semantic_change
+    - architectural_change
+    - newly_load_bearing_abstraction
+    - failed_verification
+    - capability_basis_change
+
+behavior_resolution:
+  input: open_obligations
+  output:
+    - executable_behavior_program
+    - OPEN_REALIZATION
+    - BLOCKED
+    - BASIS_GAP
+    - CONFLICT
+  rule: >
+    Search failure is not basis insufficiency. BASIS_GAP requires evidence that the required
+    behavior is outside the currently admitted behavioral closure or cannot be preserved
+    by existing compositions.
+
+execution:
+  rules:
+    - generation_does_not_imply_admission
+    - admission_does_not_imply_execution
+    - execution_does_not_imply_promotion
+    - child_authority_cannot_exceed_grant
+    - no_self_promotion
+    - preserve_protected_behavior
+    - exact_identity_provenance_currentness
+    - preserve_OPEN_and_INCOMPARABLE
+
+verification:
+  required:
+    - target_effect
+    - protected_behavior_non_regression
+    - execution_truth
+    - authority_integrity
+    - semantic_delta_check
+    - residual_recomputation
+  failed_verification: creates_new_obligation
+
+closure:
+  type: earned_terminal_state
+  prohibited_shortcuts:
+    - no_obvious_next_action
+    - local_tool_success
+    - single_pass_completion
+    - unchanged_tool_queue
+  fresh_regeneration_required: true
+
+relation_to_take_four:
+  existing_loop_mapping:
+    ORIENT: semantic_admission_and_job_freeze
+    NAVIGATE: recover_exact_current_objects_and_authority
+    RESOLVE: generate_and_type_obligations
+    SELECT: resolve_required_behaviors
+    EXECUTE: execute_under_license
+    VERIFY: verify_effect_and_protected_behavior
+    UPDATE: persist_verified_state_delta_and_discharge
+    RESELECT: regenerate_obligations_and_reenter
+
+relation_to_take_five:
+  reusable_components:
+    - semantic_admission_gate
+    - obligation_engine
+    - behavior_resolver
+    - discharge_ledger
+    - closure_kernel
+    - authority_separation
+    - state_delta_reentry
+  placement_status: OPEN
+  rule: >
+    Take Five may reuse these behaviors without inheriting Take Four's repository architecture.
