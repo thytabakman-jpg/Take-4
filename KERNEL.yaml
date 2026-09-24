@@ -1,4 +1,4 @@
-schema_version: 0.1
+schema_version: 0.2
 experiment: take_4_informed_reconstruction
 status: BOOTSTRAP_CANDIDATE
 authority: experimental_only
@@ -26,5 +26,17 @@ protected:
   - INCOMPARABLE
   - candidate_promoted_distinction
   - semantic_runtime_authority_separation
+  - generation_admission_execution_promotion_separation
+  - type_before_operation
+  - fresh_obligation_regeneration_before_closure
 inheritance_rule: inherit_evidence_not_architecture
 surface_rule: semantic_coordinate_does_not_require_independent_registry
+
+experimental_subsystems:
+  endogenous_work_generator:
+    spec: spec/EWG-001.yaml
+    status: EXPERIMENTAL
+    placement: controller_subsystem
+    function: admitted_state_plus_protected_job_to_verified_residual_closure
+    no_self_promotion: true
+    production_authority: none
