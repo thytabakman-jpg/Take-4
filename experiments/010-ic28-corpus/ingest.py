@@ -5,7 +5,7 @@ OUT=ROOT/"experiments/010-ic28-corpus/result.json"
 
 with tempfile.TemporaryDirectory() as td:
     corpus=pathlib.Path(td)/"Reaserch"
-    subprocess.run(["git","clone","--depth","1","https://github.com/thytabakman-jpg/Reaserch.git",str(corpus)],check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    subprocess.run(["git","clone","--depth","1","https://github.com/thytabakman-jpg/Reaserch.git",str(corpus)],check=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
     include=[]
     for p in corpus.rglob("*"):
         if not p.is_file() or ".git" in p.parts: continue
