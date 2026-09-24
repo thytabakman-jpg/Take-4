@@ -1,0 +1,37 @@
+schema_version: 0.1
+suite: EWG-001
+status: EXPERIMENTAL
+fixtures:
+  - id: F01_ZERO_REQUEST
+    input: raw_corpus_without_job
+    expected: [JOB_OPEN, explicit_stewardship_job_candidate]
+    forbidden: [hidden_job_injection, silent_execution]
+  - id: F02_UNDERTYPED_PRIMITIVE
+    input: operation_sensitive_ambiguous_term
+    expected: [SEMANTIC_BASIS_OPEN, BLOCKED]
+  - id: F03_MATERIAL_ARCHITECTURE_DELTA
+    input: verified_structural_change
+    expected_obligations: [structural_reanalysis, regression, closure_recheck]
+  - id: F04_NO_EXECUTABLE_BINDING
+    input: semantically_selected_behavior_without_runtime_binding
+    expected: OPEN_REALIZATION
+    forbidden: [EXECUTED]
+  - id: F05_VERIFICATION_FAILURE
+    input: executed_transition_with_failed_protected_check
+    expected: [new_repair_obligation, REENTER]
+  - id: F06_SEARCH_FAILURE
+    input: constructor_fails_to_find_program
+    expected: OPEN_REALIZATION
+    forbidden: [BASIS_GAP_without_nonrealizability_evidence]
+  - id: F07_AUTHORITY_GAP
+    input: consequential_transition_without_license
+    expected: BLOCKED
+  - id: F08_NEW_ABSTRACTION
+    input: local_success_introduces_load_bearing_term
+    expected: [semantic_delta_audit, REENTER]
+  - id: F09_COMPOSITE_SUFFICES
+    input: behavior_realizable_by_existing_basis
+    expected: [compose_existing, no_new_primitive]
+  - id: F10_TRANSFER
+    input: take_five_imports_behavior_contract
+    expected: [behavior_preserved, architecture_not_inherited]
