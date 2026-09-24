@@ -47,3 +47,19 @@ Reaserch remains an external corpus/authority source. Take-4 must demonstrate th
 BOOTSTRAP_CANDIDATE.
 No production authority.
 No IC-022 promotion.
+
+## Endogenous work generation experiment
+
+Take-4 now carries an explicit experimental subsystem specification at `spec/EWG-001.yaml`.
+
+Its job is narrower and more precise than "controller": given a protected job, admitted current state,
+authority context, and behavioral basis, it generates justified unresolved obligations, resolves those
+obligations into executable behavior when licensed, verifies the resulting state delta, and re-enters
+until fresh obligation generation yields no unresolved justified work.
+
+This is a behavior contract, not a promoted architecture. The specification keeps semantic admission,
+authority, execution truth, verification, and promotion distinct. Its validation matrix is in
+`docs/EWG-001_VALIDATION.md`, with adversarial fixtures in `experiments/EWG-001_FIXTURES.yaml`.
+
+The design is intentionally transferable to Take-5 without requiring Take-5 to inherit Take-4's
+repository layout or controller placement.
