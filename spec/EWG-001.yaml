@@ -27,7 +27,7 @@ entry_modes:
     hidden_job_injection: prohibited
 
 mathematical_object:
-  tuple: "<M,J,S,A,B,O,Psi,Gamma,X,V,D,K>"
+  tuple: "<M,J,S,A,B,O,Psi,pi,Gamma,X,V,D,Q,K>"
   coordinates:
     M: entry_mode
     J: protected_job_contract_or_explicit_stewardship_contract
@@ -36,14 +36,17 @@ mathematical_object:
     B: normalized_behavior_basis
     O: open_obligation_frontier
     Psi: zero_request_candidate_job_synthesizer
+    pi: obligation_selector_preserving_incomparability
     Gamma: behavior_realizer
     X: execution_semantics
     V: verification_semantics
     D: verified_discharge_ledger
+    Q: run_budget_and_checkpoint_state
     K: closure_kernel
   residual: "R_M,J,K(S) = justified unmet conditions licensed by the active entry-mode contract"
   obligation_generation: "O_t = Generate(J,S_t,DeltaS_{t-1},A_t) - D_t"
-  resolution: "Pi_t = Gamma(O_t,B,A_t)"
+  selection: "W_t = pi(O_t,J,S_t,A_t,Q_t), preserving unresolved incomparability"
+  resolution: "Pi_t = Gamma(W_t,B,A_t)"
   transition: "S_t --Pi_t--> S_{t+1}"
   closure: "STOP iff O_t = empty AND Generate(J,S_t,0,A_t)-D_t = empty"
 
@@ -164,3 +167,24 @@ relation_to_pd_mta_architecture:
   HF1: recursive_residual_discovery_behavior_provider
   tool_run_closure: per_operation_terminal_state_wrapper
   EWG_001: cross_operation_work_frontier_and_reentry_controller
+
+bounded_run:
+  candidate_frontier: may_be_unbounded
+  execution_batch: bounded
+  checkpoint_required: true
+  budget_exhaustion_status: PAUSED_OPEN
+  rule: >
+    Resource or batch exhaustion cannot satisfy closure. On budget exhaustion, persist the
+    open frontier, discharge ledger, exact state, and continuation pointer.
+
+selection:
+  required_basis:
+    - protected_job_relevance
+    - dependency_precedence
+    - result_sensitivity
+    - authority_and_executability
+    - information_gain_or_unlock_value_when_discriminating
+  rules:
+    - preserve_INCOMPARABLE_when_no_licensed_total_order_exists
+    - selector_basis_must_be_recorded
+    - selected_work_does_not_gain_authority_by_selection
