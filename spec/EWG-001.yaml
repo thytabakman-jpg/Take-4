@@ -5,25 +5,43 @@ status: EXPERIMENTAL
 authority: experimental_only
 role: controller_subsystem
 definition: >
-  A goal-conditioned endogenous work generator maps an admitted state and protected job
-  to the justified residual work frontier, resolves that frontier into executable behavioral
-  realizations, verifies state deltas, and re-enters until fresh obligation generation
-  yields no unresolved justified work.
+  An endogenous work generator maps admitted state into justified work through one of two
+  explicit entry modes: job-conditioned execution under a protected job contract, or
+  zero-request discovery under an explicit stewardship experiment contract. It resolves the
+  resulting obligation frontier into executable behavioral realizations, verifies state deltas,
+  and re-enters until fresh obligation generation yields no unresolved justified work.
+entry_modes:
+  JOB_CONDITIONED:
+    input: protected_job_contract
+    execution_authority: bounded_by_job_and_grant
+  ZERO_REQUEST_DISCOVERY:
+    input: admitted_corpus_without_user_selected_job
+    experiment_contract: >
+      Recover current state, surface result-sensitive incoherence, unresolved dependencies,
+      missing bindings, verification failures, and high-value work candidates without silently
+      inventing an external substantive objective.
+    job_synthesis: "Psi(S,A,B) -> candidate_job_frontier"
+    default_authority: analysis_only
+    consequential_execution_requires: explicit_authority_grant
+    output: candidate_jobs_plus_safe_analysis_obligations
+    hidden_job_injection: prohibited
 
 mathematical_object:
-  tuple: "<J,S,A,B,O,Gamma,X,V,D,K>"
+  tuple: "<M,J,S,A,B,O,Psi,Gamma,X,V,D,K>"
   coordinates:
-    J: protected_job_contract
+    M: entry_mode
+    J: protected_job_contract_or_explicit_stewardship_contract
     S: admitted_current_state
     A: authority_and_license_state
     B: normalized_behavior_basis
     O: open_obligation_frontier
+    Psi: zero_request_candidate_job_synthesizer
     Gamma: behavior_realizer
     X: execution_semantics
     V: verification_semantics
     D: verified_discharge_ledger
     K: closure_kernel
-  residual: "R_J,K(S) = justified unmet conditions for satisfying J from S under kernel K"
+  residual: "R_M,J,K(S) = justified unmet conditions licensed by the active entry-mode contract"
   obligation_generation: "O_t = Generate(J,S_t,DeltaS_{t-1},A_t) - D_t"
   resolution: "Pi_t = Gamma(O_t,B,A_t)"
   transition: "S_t --Pi_t--> S_{t+1}"
@@ -130,3 +148,19 @@ relation_to_take_five:
   placement_status: OPEN
   rule: >
     Take Five may reuse these behaviors without inheriting Take Four's repository architecture.
+
+relation_to_improvement_core:
+  distinction: >
+    EWG-001 generates and closes the justified work frontier. Improvement Core is an
+    improvement policy/controller that can consume that frontier, propose repairs, and
+    optimize candidate transitions. Improvement Core does not define what work exists
+    and cannot authorize its own proposals.
+  flow: "EWG obligations -> Improvement Core candidate improvements -> authority gate -> execution -> verification -> EWG reentry"
+
+relation_to_pd_mta_architecture:
+  PD: epistemic_behavior_provider_for_typing_dependency_result_sensitivity_and_validation
+  MTA: structural_factorization_behavior_provider
+  architecture_analysis: placement_and_dependency_behavior_provider
+  HF1: recursive_residual_discovery_behavior_provider
+  tool_run_closure: per_operation_terminal_state_wrapper
+  EWG_001: cross_operation_work_frontier_and_reentry_controller
