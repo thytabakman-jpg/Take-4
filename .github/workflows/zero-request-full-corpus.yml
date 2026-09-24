@@ -1,0 +1,21 @@
+name: Zero Request Full Corpus
+on:
+  pull_request:
+    paths:
+      - 'experiments/010-zero-request-full-corpus/**'
+      - '.github/workflows/zero-request-full-corpus.yml'
+  workflow_dispatch:
+jobs:
+  zero-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute with corpus and no substantive job
+        run: python3 experiments/010-zero-request-full-corpus/run.py
+      - name: Kernel fitness
+        run: python3 tools/check_kernel.py
+      - name: Upload observed output
+        uses: actions/upload-artifact@v4
+        with:
+          name: zero-request-full-corpus-result
+          path: experiments/010-zero-request-full-corpus/result.json
