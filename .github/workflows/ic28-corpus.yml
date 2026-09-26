@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: thytabakman-jpg/Reaserch
-          token: ${{ secrets.REASERCH_READ_TOKEN }}
+          token: ${{ secrets.PORTFOLIO_READ_TOKEN }}
           path: _reaserch
           persist-credentials: false
           fetch-depth: 1
