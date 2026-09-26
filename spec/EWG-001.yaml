@@ -40,15 +40,16 @@ mathematical_object:
     Gamma: behavior_realizer
     X: execution_semantics
     V: verification_semantics
-    D: verified_discharge_ledger
+    D: execution_and_discharge_evidence_ledger
     Q: run_budget_and_checkpoint_state
     K: closure_kernel
   residual: "R_M,J,K(S) = justified unmet conditions licensed by the active entry-mode contract"
-  obligation_generation: "O_t = Generate(J,S_t,DeltaS_{t-1},A_t) - D_t"
+  requirement_generation: "U_t = {r in Req(M,J,S_t,DeltaS_{t-1},A_t) : not Sat(r,S_t,V_t)}"
+  obligation_generation: "O_t = Instantiate(U_t); D_t records attempts/results but cannot subtract an unsatisfied requirement"
   selection: "W_t = pi(O_t,J,S_t,A_t,Q_t), preserving unresolved incomparability"
   resolution: "Pi_t = Gamma(W_t,B,A_t)"
   transition: "S_t --Pi_t--> S_{t+1}"
-  closure: "STOP iff O_t = empty AND Generate(J,S_t,0,A_t)-D_t = empty"
+  closure: "STOP iff U_t = empty AND a fresh requirement pass U_star(M,J,S_t,0,A_t,V_t) = empty"
 
 input_contract:
   required:
@@ -117,7 +118,7 @@ verification:
     - authority_integrity
     - semantic_delta_check
     - residual_recomputation
-  failed_verification: creates_new_obligation
+  failed_verification: keeps_or_reissues_the_underlying_requirement_open
 
 closure:
   type: earned_terminal_state
@@ -127,6 +128,12 @@ closure:
     - single_pass_completion
     - unchanged_tool_queue
   fresh_regeneration_required: true
+  satisfaction_invariant: >
+    Completing or discharging an operation never by itself satisfies the requirement that
+    caused it. Closure depends on verified postconditions in state, not on ledger membership.
+  ledger_rule: >
+    The discharge ledger is evidence about attempted/completed work; it is non-authorizing
+    and cannot mask a requirement whose satisfaction predicate remains false.
 
 relation_to_take_four:
   existing_loop_mapping:
@@ -136,7 +143,7 @@ relation_to_take_four:
     SELECT: resolve_required_behaviors
     EXECUTE: execute_under_license
     VERIFY: verify_effect_and_protected_behavior
-    UPDATE: persist_verified_state_delta_and_discharge
+    UPDATE: persist_verified_state_delta_and_execution_evidence
     RESELECT: regenerate_obligations_and_reenter
 
 relation_to_take_five:
@@ -175,7 +182,7 @@ bounded_run:
   budget_exhaustion_status: PAUSED_OPEN
   rule: >
     Resource or batch exhaustion cannot satisfy closure. On budget exhaustion, persist the
-    open frontier, discharge ledger, exact state, and continuation pointer.
+    open requirement frontier, execution ledger, exact state, and continuation pointer.
 
 selection:
   required_basis:
