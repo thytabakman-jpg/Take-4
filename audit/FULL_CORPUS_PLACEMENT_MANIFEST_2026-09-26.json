@@ -1,0 +1,319 @@
+{
+  "schema": "FULL_CORPUS_PLACEMENT_MANIFEST/v1",
+  "date": "2026-09-26",
+  "repository": "thytabakman-jpg/Take-4",
+  "branch": "improvecore/full-corpus-placement-audit-20260926",
+  "tree_truncated": false,
+  "total_files": 50,
+  "coverage": "every blob in recursive git tree",
+  "placement_counts": {
+    "VERIFICATION": 6,
+    "GENERAL": 1,
+    "ARCHITECTURE": 2,
+    "NAVIGATION": 1,
+    "EVIDENCE_HISTORY": 31,
+    "EXECUTABLE": 9
+  },
+  "files": [
+    {
+      "path": ".github/workflows/closed-loop.yml",
+      "sha": "98387c920035e6d4ed2deee6fa8b60884a612eb1",
+      "size": 431,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": ".github/workflows/ic28-corpus.yml",
+      "sha": "dd9e83c8da461050306d47503177c0d1f81a06e5",
+      "size": 750,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": ".github/workflows/icc-adaptive-harness.yml",
+      "sha": "db8b9722cf02537d2d5e998fbf64b99afe240e85",
+      "size": 532,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": ".github/workflows/map-ingestion.yml",
+      "sha": "c08f1375d45205f901ee60e47a35b413695fb88a",
+      "size": 730,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": "BENCHMARKS.md",
+      "sha": "16347047521d76c5cf0ac126f160abe3171ca227",
+      "size": 1756,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": "ICC_CONTROL_PROMPT.md",
+      "sha": "fd7666a543db48a60165130beb15e2cbc9f05f25",
+      "size": 3725,
+      "placement": "GENERAL"
+    },
+    {
+      "path": "KERNEL.yaml",
+      "sha": "463a3bcafe88511df609f0d26bc7ed503dd68f78",
+      "size": 1213,
+      "placement": "ARCHITECTURE"
+    },
+    {
+      "path": "README.md",
+      "sha": "f3bea01c908fc48983694c6f6bece8a6beca546f",
+      "size": 1740,
+      "placement": "NAVIGATION"
+    },
+    {
+      "path": "experiments/001-bootstrap/RESULT.md",
+      "sha": "63286301de4afa6a3844f33f31d7bb1c78c2c57d",
+      "size": 633,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/002-controller-math/EQUIVALENCE_DIVERGENCE.md",
+      "sha": "0ad73fed9ec0fd2eea45fc073eae1f47887a14f5",
+      "size": 9106,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/002-controller-math/PROGRAM.md",
+      "sha": "d2ed8343087bed3220b58390cf7b788b90505343",
+      "size": 5863,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/002-controller-math/TOOL_SATURATION_ATTACK.md",
+      "sha": "3427ecbf729fbe0c7a4fe9846f823a9505a9079b",
+      "size": 9679,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/003-autonomous-witness/EVALUATOR_SPEC.md",
+      "sha": "fa649aeaac56197a55ca8540c38e4f7eb2e36def",
+      "size": 1390,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/003-autonomous-witness/FIXTURE.yaml",
+      "sha": "149e932402a98700a92e3f57e43e1a353d8d6e37",
+      "size": 1534,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/003-autonomous-witness/RESULT.md",
+      "sha": "729f71cb9732049f7399c51188a544427613e961",
+      "size": 2281,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/003-autonomous-witness/TRACES.md",
+      "sha": "dda49d8a993866bfd655c59ce4206adb15947a34",
+      "size": 1898,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/004-closed-loop/ICC_REWRITTEN_PROMPT.md",
+      "sha": "e9912f2b33fd40f7347f2e22f365504ffbe57352",
+      "size": 881,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/004-closed-loop/README.md",
+      "sha": "50e73b0983cddf4b93b7d9375ff7aabc7f934d2e",
+      "size": 567,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/004-closed-loop/loop.py",
+      "sha": "19d124500bead37cb993f997a5710fe982f1d86f",
+      "size": 2578,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/005-six-generation-autonomy/GEN1_HANDOFF.md",
+      "sha": "1529136b2c73d35a4b72ee4370e87376bbb1be53",
+      "size": 1305,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/005-six-generation-autonomy/GEN2_REASSESSMENT.md",
+      "sha": "ac92b76d37fb2d2a99ffcc8650adf2de3a70ec66",
+      "size": 1566,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/005-six-generation-autonomy/PROGRAM.md",
+      "sha": "16d8f7d1471a3d1bfaf3e585b620bb0196083eab",
+      "size": 5125,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/BLOCKER_DIAGNOSIS_001.md",
+      "sha": "c682ec0efc2bf2f47ef67e71927d2d637e53a6ee",
+      "size": 1443,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/HANDOFF_GEN1.md",
+      "sha": "5f4daa7f3866a37b6f788fd3e71075e494cc616f",
+      "size": 982,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/PROGRAM.md",
+      "sha": "c04c1e1581d7fa97232450808b07cd476334e9d6",
+      "size": 5269,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/TRACE_SCHEMA.md",
+      "sha": "5c888ffb02a679ee71724b55a1b6d169c60d1bd8",
+      "size": 554,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/WHATS_NEXT_REPAIR.md",
+      "sha": "811f0a5aa4cc19fc85f04eceeb357b1cda7d2025",
+      "size": 1882,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/006-adaptive-program/fixtures.py",
+      "sha": "9d68acfa2b3efa97e23669a3131c7d7300754c6c",
+      "size": 831,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/006-adaptive-program/harness.py",
+      "sha": "4a6dbe8a329999a4e76d77b7ee603face30283f2",
+      "size": 741,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/006-adaptive-program/mutations.py",
+      "sha": "20c0c121a9eef069153a1ee2f35a64c527e1b5ee",
+      "size": 332,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/006-adaptive-program/oracle.py",
+      "sha": "0f50170b2b84d44624793ea2aa55d6ff7191554d",
+      "size": 319,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/CHARTER.md",
+      "sha": "d94f35a3a841bbeacc390f218f779388410e9a98",
+      "size": 2290,
+      "placement": "ARCHITECTURE"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP01_CHILD_SWARM.md",
+      "sha": "a0f7067295e8d64ece69740f3732a88c0c72df95",
+      "size": 946,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP02_ORACLE_ATTACK.md",
+      "sha": "46d857f45c271ad428606a24ef1678ca175b8ce2",
+      "size": 585,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP03_TRACE_MODEL.md",
+      "sha": "c4b901017f042520768dc511a49d16bd7dec4507",
+      "size": 557,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP04_IMPLEMENTATION.md",
+      "sha": "3b7af904ef7c8f8e5264558ed356cd917425e01d",
+      "size": 373,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP05_ADVERSARIAL_SUITE.md",
+      "sha": "e43ca7d5a8c5a7f498a941ba1b91e06dc3564c31",
+      "size": 603,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP06_MAP_REASSESSMENT.md",
+      "sha": "1b2338fac17e32181583a5e59819cd58bc1c1104",
+      "size": 1040,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP07_INTERACTION.md",
+      "sha": "9eac5d538b06a78ddd6a33b1ea385ed52a62e47c",
+      "size": 799,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP08_COMPRESSION_ATTACK.md",
+      "sha": "ff11a4b15465090da7732798b52a0109aef9ab2d",
+      "size": 1066,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP09_RIVAL_REPRESENTATION.md",
+      "sha": "ab167301b75e586522327aa2724761dda4860d79",
+      "size": 1048,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/STEP10_SYNTHESIS.md",
+      "sha": "c307db31d86634b68ecb67959eb9473cd2f26ebc",
+      "size": 2003,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/test_trace_oracle.py",
+      "sha": "d99b36e929cd194d4e0bba8ffdd69a0a4bc03dcc",
+      "size": 1290,
+      "placement": "VERIFICATION"
+    },
+    {
+      "path": "experiments/007-ten-step-recursive-autonomy/trace_oracle.py",
+      "sha": "7d25abbd2dc658b9fba29642eda32d8447085e13",
+      "size": 1152,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/008-autonomous-goal-reconstruction/GOAL_RECONSTRUCTION.md",
+      "sha": "c1be011597a7a9d9ae7fd4fb840b0396a0834bfa",
+      "size": 4745,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/009-map-ingestion/README.md",
+      "sha": "421ebb829c15d891ac36012813dbbe1a618cc7a4",
+      "size": 729,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/009-map-ingestion/ingest.py",
+      "sha": "bae0d72fce6350a7609e0d8b38b336dd546808c2",
+      "size": 3238,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "experiments/010-ic28-corpus/README.md",
+      "sha": "b7aa04897171cd30fcea19f34b3c2226a7c23802",
+      "size": 2001,
+      "placement": "EVIDENCE_HISTORY"
+    },
+    {
+      "path": "experiments/010-ic28-corpus/ingest.py",
+      "sha": "2c6fd676edc575816791789c563acef15a568a7f",
+      "size": 2647,
+      "placement": "EXECUTABLE"
+    },
+    {
+      "path": "tools/check_kernel.py",
+      "sha": "02c867a081cb59f6848fc7b74c59880663040401",
+      "size": 670,
+      "placement": "EXECUTABLE"
+    }
+  ]
+}
