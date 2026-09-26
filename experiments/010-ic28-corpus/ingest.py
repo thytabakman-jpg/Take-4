@@ -2,10 +2,27 @@ import hashlib, json, os, pathlib, subprocess, tempfile
 
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 OUT=ROOT/"experiments/010-ic28-corpus/result.json"
+SOURCE="https://github.com/thytabakman-jpg/Reaserch.git"
+
+def source_root(td):
+    configured=os.environ.get("REASERCH_DIR")
+    if configured:
+        corpus=pathlib.Path(configured).expanduser().resolve()
+        if not corpus.is_dir():
+            raise RuntimeError(f"REASERCH_DIR is not a directory: {corpus}")
+        return corpus,"pre-authenticated local checkout"
+    corpus=pathlib.Path(td)/"Reaserch"
+    subprocess.run(
+        ["git","clone","--depth","1",SOURCE,str(corpus)],
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    return corpus,"git clone using ambient Git credentials"
 
 with tempfile.TemporaryDirectory() as td:
-    corpus=pathlib.Path(td)/"Reaserch"
-    subprocess.run(["git","clone","--depth","1","https://github.com/thytabakman-jpg/Reaserch.git",str(corpus)],check=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    corpus,input_boundary=source_root(td)
     include=[]
     for p in corpus.rglob("*"):
         if not p.is_file() or ".git" in p.parts: continue
@@ -36,7 +53,8 @@ with tempfile.TemporaryDirectory() as td:
       "experiment":"010-ic28-corpus",
       "job":None,
       "request_semantics":"NO_SUBSTANTIVE_JOB",
-      "boundary":"actual Reaserch clone into Take-4 execution",
+      "boundary":input_boundary,
+      "source":SOURCE,
       "counts":{"total":len(include),"ic_versions":len(versions),"maps":len(maps),"math_artifacts":len(math)},
       "contains_ic026":any(x["path"].endswith("IC-2026-09-24-026.yaml") for x in include),
       "contains_canonical_ic026":any(x["path"].endswith("IC026_CANONICAL_CURRENT_STATE.md") for x in include),

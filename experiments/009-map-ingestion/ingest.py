@@ -13,10 +13,26 @@ def tokens(text):
     stop={"this","that","with","from","into","when","where","current","project","system","map","maps","date","status"}
     return {w for w in words if w not in stop}
 
+def source_root(td):
+    configured=os.environ.get("REASERCH_DIR")
+    if configured:
+        root=Path(configured).expanduser().resolve()
+        if not root.is_dir():
+            raise RuntimeError(f"REASERCH_DIR is not a directory: {root}")
+        return root,"pre-authenticated local checkout"
+    root=Path(td)/"r"
+    subprocess.run(
+        ["git","clone","--depth","1",SOURCE,str(root)],
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    return root,"git clone using ambient Git credentials"
+
 def run():
     with tempfile.TemporaryDirectory() as td:
-        subprocess.run(["git","clone","--depth","1",SOURCE,td+"/r"],check=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-        root=Path(td)/"r"
+        root,input_boundary=source_root(td)
         files=[]
         for p in root.rglob("*"):
             if not p.is_file() or ".git" in p.parts: continue
@@ -42,7 +58,7 @@ def run():
         result={
           "experiment":"009-map-ingestion",
           "source":SOURCE,
-          "actual_input_boundary":"git clone source repository then read every case-insensitive *map* filename plus MASTER_REGISTER",
+          "actual_input_boundary":input_boundary,
           "map_count":len(files),
           "required_new_maps":{x:(x in paths) for x in required},
           "all_required_new_maps_ingested":all(x in paths for x in required),
