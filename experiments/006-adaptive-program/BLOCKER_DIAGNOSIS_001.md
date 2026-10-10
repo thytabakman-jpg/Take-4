@@ -1,4 +1,14 @@
-# ICC Blocker Diagnosis 001
+# Atomic Repository Writes Succeeded; Combined Write Orchestration Was the Actual Blocker
+
+<a id="icc-blocker-diagnosis-001"></a>
+**Historical report title:** ICC Blocker Diagnosis 001  
+**Role:** Historical failure diagnosis and limited repair-verification record.  
+**Goal:** Distinguish a transient combined-write failure from a prohibited project, and preserve the separate source-write success and unresolved workflow-execution cut for subsequent maintainers.
+
+## Principal finding and scope limit
+
+Breaking the combined write into atomic repository transitions succeeded and falsified the broad claim that ICC could not create the harness. **Source writes were verified; runtime execution and workflow-run observability remained OPEN.**
+
 
 Date: 2026-09-24
 
