@@ -1,18 +1,5 @@
-# ICC Bootstrap Result 001
+# RESULT.md
 
-ICC did not copy Reaserch or Take-2.
+The [exact experiment record in Reaserch](https://github.com/thytabakman-jpg/Reaserch/blob/main/System-Wide%20Experiments/Kernel%20and%20Controller%20Experiments/Take-4/experiments/001-bootstrap/RESULT.md) is the maintained location for this record.
 
-It imported demonstrated problem distinctions while leaving repository surfaces external.
-
-Candidate coordinates:
-Episode, Object, Evidence, Authority, Decision, Transition, Verification, State Delta.
-
-This creates a direct experiment against:
-- Take-2's five durable primitives;
-- Take-3's four-record clean-room model;
-- Reaserch's many specialized control surfaces.
-
-Next discriminator:
-B1 wrong-object recovery, followed by B6 broad-corpus navigation.
-
-A Take-4 component survives only when matched evidence shows result-sensitive gain or necessary preservation.
+The [original Take-4 revision](https://github.com/thytabakman-jpg/Take-4/blob/a93f3801555b75c88b180ec08bc136041662c785/experiments/001-bootstrap/RESULT.md) remains available for citations.
